@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+    id 'org.beryx.jlink' version '2.22.1'
+}
+
+group 'fr.thomasleberre.chat.server'
+version '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.openjfx:javafx-base:11.0.2:win'
+    implementation 'org.openjfx:javafx-controls:11.0.2:win'
+    implementation 'org.openjfx:javafx-graphics:11.0.2:win'
+    implementation 'org.openjfx:javafx-fxml:11.0.2:win'
+}
+
+java {
+    modularity.inferModulePath = true
+}
+
+application {
+    mainModule = 'chat.server'
+    mainClass = 'fr.thomasleberre.chat.server.Server'
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+jlink {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = 'chat-server'
+    }
+}
