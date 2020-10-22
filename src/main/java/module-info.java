@@ -5,4 +5,5 @@ module chat.server {
     opens fr.thomasleberre.chat.server.controller to javafx.fxml;
 
     exports fr.thomasleberre.chat.server to javafx.graphics;
+    exports fr.thomasleberre.chat.server.database;
 }
